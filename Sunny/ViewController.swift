@@ -18,90 +18,47 @@ class ViewController: UIViewController, CLLocationManagerDelegate
 	var latDelta:CLLocationDegrees = 0.01
 	var lonDelta:CLLocationDegrees = 0.01
 	
+	var poa = [Double]()
+	
 	func getSolarRadiationData()
 	{
-		let userLocation = locationManager.location?.coordinate
-		latDelta = (userLocation?.latitude)!
-		lonDelta = (userLocation?.longitude)!
-		let url = URL(string: "https://developer.nrel.gov/api/pvwatts/v5.json?api_key=PytdR7eeSMdiOWjlgsXMr7vZqIRutg9nIclhEISj&module_type=0&losses=0&array_type=0&tilt=30&azimuth=180&lat=\(latDelta)&lon=\(lonDelta)&dataset=intl&radius=0&system_capacity=1")!
+		let url = URL(string: "https://developer.nrel.gov/api/pvwatts/v5.json?api_key=PytdR7eeSMdiOWjlgsXMr7vZqIRutg9nIclhEISj&timeframe=hourly&module_type=0&losses=0&array_type=0&tilt=30&azimuth=180&lat=\(latDelta)&lon=\(lonDelta)&dataset=intl&radius=0&system_capacity=1")!
 		let getForecast = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
 			// data var ise
 			if let urlContent = data
 			{
 				// decode et
-				/*
+				
 				do
 				{
 					let json = try JSONSerialization.jsonObject(with: urlContent) as? [String: Any]
-					let list = json?["list"] as? [[String:Any]]
-					for element in list!
-					{
-						let cloudData = element["clouds"] as! [String:Any]
-						let date = element["dt_txt"] as! String
-						print("Date: \(date) Cloudy: \(cloudData["all"]!)%")
-					}
+					let outputs = json?["outputs"] as? [String:Any]
+					self.poa = (outputs?["poa"] as? [Double])!
 				}
 				catch
 				{
 					print("Error deserializing JSON: \(error)")
 				}
-*/
+
+				print(self.poaForDate(month: 3, day: 12))
+				
 				let webContent = NSString(data: urlContent, encoding: String.Encoding.utf8.rawValue)!
 				// istedigin stringi ara
-				print(webContent)
+				//print(webContent)
 			}
 			
 		})
 		
 		
 		getForecast.resume()
-		/*
-		// boşlukları doldur.
-		let input = inputCity.text?.replacingOccurrences(of: " ", with: "-")
-		// string to url
-		let url = URL(string: "http://www.weather-forecast.com/locations/" + input! + "/forecasts/latest")!
-		// datayı al
-		let getForecast = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
-		// data var ise
-		if let urlContent = data
-		{
-		// decode et
-		let webContent = NSString(data: urlContent, encoding: String.Encoding.utf8.rawValue)!
-		// istedigin stringi ara
-		let websiteArray = webContent.components(separatedBy: "Day Weather Forecast Summary:</b><span class=\"read-more-small\"><span class=\"read-more-content\"> <span class=\"phrase\">")
-		if ( websiteArray.count > 1)
-		{
-		let forecast = websiteArray[1].components(separatedBy: "</span>")
-		if (forecast.count > 1)
-		{
-		let weatherSummary = forecast[0].replacingOccurrences(of: "&deg;", with: "º")
-		// ekranda goster
-		DispatchQueue.main.async(execute: { () -> Void in
-		self.displayLabel.text = weatherSummary
-		self.displayLabel.textColor = UIColor.blue
-		})
-		print(weatherSummary)
-		}
-		}
-		else
-		{
-		DispatchQueue.main.async(execute: { () -> Void in
-		self.displayLabel.text = "Invalid City"
-		self.displayLabel.textColor = UIColor.red
-		})
-		}
-		}
-		
-		})
-		
-		
-		getForecast.resume()
-		*/
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
+		
+		print(getSpecificDay(month: 3, day: 12))
+		
 		dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 		print(dateFormatter.string(from: NSDate() as Date))
 		
@@ -130,8 +87,103 @@ class ViewController: UIViewController, CLLocationManagerDelegate
 	
 	@IBAction func button(_ sender: Any)
 	{
+		let userLocation = locationManager.location?.coordinate
+		latDelta = (userLocation?.latitude)!
+		lonDelta = (userLocation?.longitude)!
 		getSolarRadiationData()
+		getForecastData()
 	}
 	
+	func getForecastData()
+	{
+		let url = URL(string: "http://api.openweathermap.org/data/2.5/forecast?lat=\(latDelta)&lon=\(lonDelta)&APPID=7e09cac8c143712d38166f92b28dc790&units=metric")!
+		let getForecast = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
+			// data var ise
+			if let urlContent = data
+			{
+				// decode et
+				do
+				{
+					let json = try JSONSerialization.jsonObject(with: urlContent) as? [String: Any]
+					let list = json?["list"] as? [[String:Any]]
+					for element in list!
+					{
+						let cloudData = element["clouds"] as! [String:Any]
+						let date = element["dt_txt"] as! String
+						print("Date: \(date) Cloudy: \(cloudData["all"]!)%")
+					}
+				}
+				catch
+				{
+					print("Error deserializing JSON: \(error)")
+				}
+				let webContent = NSString(data: urlContent, encoding: String.Encoding.utf8.rawValue)!
+				// istedigin stringi ara
+				//print(webContent)
+			}
+			
+		})
+		getForecast.resume()
+	}
+	
+	func getSpecificDay(month: Int, day: Int) -> Int
+	{
+		if (day > 0)
+		{
+			return day + getSpecificDay(month: month,day: 0)
+		}
+		if (month == 12)
+		{
+			return 30 + getSpecificDay(month: month-1,day: 0)
+		}
+		else if (month == 11)
+		{
+			return 31 + getSpecificDay(month: month-1,day: 0)
+		}
+		else if (month == 10)
+		{
+			return 30 + getSpecificDay(month: month-1,day: 0)
+		}
+		else if (month == 9)
+		{
+			return 31 + getSpecificDay(month: month-1,day: 0)
+		}
+		else if (month == 8)
+		{
+			return 31 + getSpecificDay(month: month-1,day: 0)
+		}
+		else if (month == 7)
+		{
+			return 30 + getSpecificDay(month: month-1,day: 0)
+		}
+		else if (month == 6)
+		{
+			return 31 + getSpecificDay(month: month-1,day: 0)
+		}
+		else if (month == 5)
+		{
+			return 30 + getSpecificDay(month: month-1,day: 0)
+		}
+		else if (month == 4)
+		{
+			return 31 + getSpecificDay(month: month-1,day: 0)
+		}
+		else if (month == 3)
+		{
+			return 28 + getSpecificDay(month: month-1,day: 0)
+		}
+		else if (month == 2)
+		{
+			return 31 + getSpecificDay(month: month-1,day: 0)
+		}
+		return 0
+	}
+	
+	func poaForDate(month: Int, day:Int) -> [Double]
+	{
+		let start:Int = (getSpecificDay(month: month, day: day) - 1) * 24
+		let end:Int = start+24
+		return Array(poa[start..<end])
+	}
 }
 
