@@ -13,6 +13,7 @@
 		CC36D5F91EB4C51900535323 /* Sunny.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC36D5F71EB4C51900535323 /* Sunny.xcdatamodeld */; };
 		CC36D5FB1EB4C51900535323 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC36D5FA1EB4C51900535323 /* Assets.xcassets */; };
 		CC36D5FE1EB4C51900535323 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC36D5FC1EB4C51900535323 /* LaunchScreen.storyboard */; };
+		CC36D6061EB4C65E00535323 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC36D6051EB4C65E00535323 /* Forecast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		CC36D5FA1EB4C51900535323 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC36D5FD1EB4C51900535323 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC36D5FF1EB4C51900535323 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC36D6051EB4C65E00535323 /* Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				CC36D5F01EB4C51900535323 /* AppDelegate.swift */,
 				CC36D5F21EB4C51900535323 /* ViewController.swift */,
+				CC36D6051EB4C65E00535323 /* Forecast.swift */,
 				CC36D5F41EB4C51900535323 /* Main.storyboard */,
 				CC36D5FA1EB4C51900535323 /* Assets.xcassets */,
 				CC36D5FC1EB4C51900535323 /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC36D6061EB4C65E00535323 /* Forecast.swift in Sources */,
 				CC36D5F31EB4C51900535323 /* ViewController.swift in Sources */,
 				CC36D5F11EB4C51900535323 /* AppDelegate.swift in Sources */,
 				CC36D5F91EB4C51900535323 /* Sunny.xcdatamodeld in Sources */,
