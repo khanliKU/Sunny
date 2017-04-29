@@ -18,17 +18,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate
 	var latDelta:CLLocationDegrees = 0.01
 	var lonDelta:CLLocationDegrees = 0.01
 	
-	func test()
+	func getSolarRadiationData()
 	{
 		let userLocation = locationManager.location?.coordinate
 		latDelta = (userLocation?.latitude)!
 		lonDelta = (userLocation?.longitude)!
-		let url = URL(string: "http://api.openweathermap.org/data/2.5/forecast?lat=\(latDelta)&lon=\(lonDelta)&APPID=7e09cac8c143712d38166f92b28dc790&units=metric")!
+		let url = URL(string: "https://developer.nrel.gov/api/pvwatts/v5.json?api_key=PytdR7eeSMdiOWjlgsXMr7vZqIRutg9nIclhEISj&module_type=0&losses=0&array_type=0&tilt=30&azimuth=180&lat=\(latDelta)&lon=\(lonDelta)&dataset=intl&radius=0&system_capacity=1")!
 		let getForecast = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
 			// data var ise
 			if let urlContent = data
 			{
 				// decode et
+				/*
 				do
 				{
 					let json = try JSONSerialization.jsonObject(with: urlContent) as? [String: Any]
@@ -44,9 +45,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate
 				{
 					print("Error deserializing JSON: \(error)")
 				}
+*/
 				let webContent = NSString(data: urlContent, encoding: String.Encoding.utf8.rawValue)!
 				// istedigin stringi ara
-				//print(webContent)
+				print(webContent)
 			}
 			
 		})
@@ -118,8 +120,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
 		locationManager.requestWhenInUseAuthorization()
 		locationManager.startUpdatingLocation()
-		
-		test()
+
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -127,6 +128,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate
 		// Dispose of any resources that can be recreated.
 	}
 	
+	@IBAction func button(_ sender: Any)
+	{
+		getSolarRadiationData()
+	}
 	
 }
 
