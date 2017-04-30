@@ -14,6 +14,17 @@
 		CC36D5FB1EB4C51900535323 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC36D5FA1EB4C51900535323 /* Assets.xcassets */; };
 		CC36D5FE1EB4C51900535323 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC36D5FC1EB4C51900535323 /* LaunchScreen.storyboard */; };
 		CC36D6061EB4C65E00535323 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC36D6051EB4C65E00535323 /* Forecast.swift */; };
+		CC9976CF1EB5E54E00FE5F89 /* GadgetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9976CE1EB5E54E00FE5F89 /* GadgetsTableViewController.swift */; };
+		CC9976D31EB5F19800FE5F89 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9976D21EB5F19800FE5F89 /* SplitViewController.swift */; };
+		CC9976D51EB5F2F100FE5F89 /* HourTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9976D41EB5F2F100FE5F89 /* HourTableViewController.swift */; };
+		CC9976D71EB5F36900FE5F89 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9976D61EB5F36900FE5F89 /* Panel.swift */; };
+		CC9976D91EB5F43300FE5F89 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9976D81EB5F43300FE5F89 /* Globals.swift */; };
+		CC9976DB1EB5F7E800FE5F89 /* HourlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9976DA1EB5F7E800FE5F89 /* HourlyTableViewCell.swift */; };
+		CC9976DD1EB5FAB900FE5F89 /* GadgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9976DC1EB5FAB900FE5F89 /* GadgetTableViewCell.swift */; };
+		CC9976DF1EB5FB8000FE5F89 /* Gadget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9976DE1EB5FB8000FE5F89 /* Gadget.swift */; };
+		CC9976E11EB5FC5600FE5F89 /* PanelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9976E01EB5FC5600FE5F89 /* PanelTableViewController.swift */; };
+		CC9976E31EB5FC6F00FE5F89 /* PanelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9976E21EB5FC6F00FE5F89 /* PanelTableViewCell.swift */; };
+		CC9976E51EB608A600FE5F89 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9976E41EB608A600FE5F89 /* launch.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +37,17 @@
 		CC36D5FD1EB4C51900535323 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC36D5FF1EB4C51900535323 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC36D6051EB4C65E00535323 /* Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		CC9976CE1EB5E54E00FE5F89 /* GadgetsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GadgetsTableViewController.swift; sourceTree = "<group>"; };
+		CC9976D21EB5F19800FE5F89 /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		CC9976D41EB5F2F100FE5F89 /* HourTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourTableViewController.swift; sourceTree = "<group>"; };
+		CC9976D61EB5F36900FE5F89 /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
+		CC9976D81EB5F43300FE5F89 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		CC9976DA1EB5F7E800FE5F89 /* HourlyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourlyTableViewCell.swift; sourceTree = "<group>"; };
+		CC9976DC1EB5FAB900FE5F89 /* GadgetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GadgetTableViewCell.swift; sourceTree = "<group>"; };
+		CC9976DE1EB5FB8000FE5F89 /* Gadget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gadget.swift; sourceTree = "<group>"; };
+		CC9976E01EB5FC5600FE5F89 /* PanelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelTableViewController.swift; sourceTree = "<group>"; };
+		CC9976E21EB5FC6F00FE5F89 /* PanelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelTableViewCell.swift; sourceTree = "<group>"; };
+		CC9976E41EB608A600FE5F89 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +80,21 @@
 		CC36D5EF1EB4C51900535323 /* Sunny */ = {
 			isa = PBXGroup;
 			children = (
+				CC9976E41EB608A600FE5F89 /* launch.png */,
 				CC36D5F01EB4C51900535323 /* AppDelegate.swift */,
 				CC36D5F21EB4C51900535323 /* ViewController.swift */,
 				CC36D6051EB4C65E00535323 /* Forecast.swift */,
 				CC36D5F41EB4C51900535323 /* Main.storyboard */,
+				CC9976E21EB5FC6F00FE5F89 /* PanelTableViewCell.swift */,
+				CC9976E01EB5FC5600FE5F89 /* PanelTableViewController.swift */,
+				CC9976DC1EB5FAB900FE5F89 /* GadgetTableViewCell.swift */,
+				CC9976D61EB5F36900FE5F89 /* Panel.swift */,
+				CC9976D81EB5F43300FE5F89 /* Globals.swift */,
+				CC9976DE1EB5FB8000FE5F89 /* Gadget.swift */,
+				CC9976D41EB5F2F100FE5F89 /* HourTableViewController.swift */,
+				CC9976DA1EB5F7E800FE5F89 /* HourlyTableViewCell.swift */,
+				CC9976D21EB5F19800FE5F89 /* SplitViewController.swift */,
+				CC9976CE1EB5E54E00FE5F89 /* GadgetsTableViewController.swift */,
 				CC36D5FA1EB4C51900535323 /* Assets.xcassets */,
 				CC36D5FC1EB4C51900535323 /* LaunchScreen.storyboard */,
 				CC36D5FF1EB4C51900535323 /* Info.plist */,
@@ -133,6 +166,7 @@
 				CC36D5FE1EB4C51900535323 /* LaunchScreen.storyboard in Resources */,
 				CC36D5FB1EB4C51900535323 /* Assets.xcassets in Resources */,
 				CC36D5F61EB4C51900535323 /* Main.storyboard in Resources */,
+				CC9976E51EB608A600FE5F89 /* launch.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,10 +177,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC9976E11EB5FC5600FE5F89 /* PanelTableViewController.swift in Sources */,
+				CC9976D31EB5F19800FE5F89 /* SplitViewController.swift in Sources */,
 				CC36D6061EB4C65E00535323 /* Forecast.swift in Sources */,
 				CC36D5F31EB4C51900535323 /* ViewController.swift in Sources */,
 				CC36D5F11EB4C51900535323 /* AppDelegate.swift in Sources */,
+				CC9976D51EB5F2F100FE5F89 /* HourTableViewController.swift in Sources */,
+				CC9976DB1EB5F7E800FE5F89 /* HourlyTableViewCell.swift in Sources */,
+				CC9976CF1EB5E54E00FE5F89 /* GadgetsTableViewController.swift in Sources */,
+				CC9976DF1EB5FB8000FE5F89 /* Gadget.swift in Sources */,
+				CC9976E31EB5FC6F00FE5F89 /* PanelTableViewCell.swift in Sources */,
 				CC36D5F91EB4C51900535323 /* Sunny.xcdatamodeld in Sources */,
+				CC9976D91EB5F43300FE5F89 /* Globals.swift in Sources */,
+				CC9976D71EB5F36900FE5F89 /* Panel.swift in Sources */,
+				CC9976DD1EB5FAB900FE5F89 /* GadgetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +356,7 @@
 				CC36D6041EB4C51900535323 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

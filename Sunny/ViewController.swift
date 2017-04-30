@@ -15,10 +15,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate
 	var dateFormatter = DateFormatter()
 	var locationManager = CLLocationManager()
 	
+	let alert = UIAlertController(title: "Connecting", message: "Gathering solar radiation data and forecast", preferredStyle: UIAlertControllerStyle.alert)
+	
+	
 	var latDelta:CLLocationDegrees = 0.01
 	var lonDelta:CLLocationDegrees = 0.01
 	
 	var poa = [Double]()
+	
+	var year:Int = 0
+	var month:Int = 0
+	var day:Int = 0
+	var hour:Int = 0
 	
 	func getSolarRadiationData()
 	{
@@ -34,15 +42,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate
 					let json = try JSONSerialization.jsonObject(with: urlContent) as? [String: Any]
 					let outputs = json?["outputs"] as? [String:Any]
 					self.poa = (outputs?["poa"] as? [Double])!
+					
+					
+					
 				}
 				catch
 				{
 					print("Error deserializing JSON: \(error)")
 				}
 
-				print(self.poaForDate(month: 3, day: 12))
+				POA = self.poaForDate(month: self.month, day: self.day)
+				print(POA)
 				
-				let webContent = NSString(data: urlContent, encoding: String.Encoding.utf8.rawValue)!
+				//let webContent = NSString(data: urlContent, encoding: String.Encoding.utf8.rawValue)!
 				// istedigin stringi ara
 				//print(webContent)
 			}
@@ -69,6 +81,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate
 		
 		var year:NSString?
 		scanner.scanUpToCharacters(from: tokenizers, into: &year)
+		var month:NSString?
+		scanner.scanUpToCharacters(from: tokenizers, into: &month)
+		var day:NSString?
+		scanner.scanUpToCharacters(from: tokenizers, into: &day)
+		var hour:NSString?
+		scanner.scanUpToCharacters(from: tokenizers, into: &hour)
+		
+		self.year = (year?.integerValue)!
+		self.month = (month?.integerValue)!
+		self.day = (day?.integerValue)!
+		self.hour = (hour?.integerValue)!
 		
 		print(year!)
 		
@@ -77,6 +100,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
 		locationManager.requestWhenInUseAuthorization()
 		locationManager.startUpdatingLocation()
+		
+		alert.addAction(UIAlertAction(title: "OK!", style: UIAlertActionStyle.default, handler: nil))
 
 	}
 	
@@ -87,6 +112,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
 	
 	@IBAction func button(_ sender: Any)
 	{
+		self.present(alert, animated: true, completion: nil)
 		let userLocation = locationManager.location?.coordinate
 		latDelta = (userLocation?.latitude)!
 		lonDelta = (userLocation?.longitude)!
@@ -110,14 +136,37 @@ class ViewController: UIViewController, CLLocationManagerDelegate
 					{
 						let cloudData = element["clouds"] as! [String:Any]
 						let date = element["dt_txt"] as! String
-						print("Date: \(date) Cloudy: \(cloudData["all"]!)%")
+						
+						let tokenizers = CharacterSet(charactersIn: "- :")
+						let scanner = Scanner(string: date)
+						scanner.charactersToBeSkipped = tokenizers
+						
+						var year:NSString?
+						scanner.scanUpToCharacters(from: tokenizers, into: &year)
+						var month:NSString?
+						scanner.scanUpToCharacters(from: tokenizers, into: &month)
+						var day:NSString?
+						scanner.scanUpToCharacters(from: tokenizers, into: &day)
+						var hour:NSString?
+						scanner.scanUpToCharacters(from: tokenizers, into: &hour)
+						
+						let Year = (year?.integerValue)!
+						let Month = (month?.integerValue)!
+						let Day = (day?.integerValue)!
+						let Hour = (hour?.integerValue)!
+						
+						if (self.day == Day)
+						{
+							forecasts.append(Forecast(Day: Day, Month: Month, Year: Year, Cloud: cloudData["all"] as! Double))
+						}
+						
 					}
 				}
 				catch
 				{
 					print("Error deserializing JSON: \(error)")
 				}
-				let webContent = NSString(data: urlContent, encoding: String.Encoding.utf8.rawValue)!
+				//let webContent = NSString(data: urlContent, encoding: String.Encoding.utf8.rawValue)!
 				// istedigin stringi ara
 				//print(webContent)
 			}

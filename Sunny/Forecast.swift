@@ -10,26 +10,15 @@ import UIKit
 
 class Forecast: NSObject
 {
-	private (set) var day:Double = 0.0
-	private (set) var month:Double = 0.0
-	private (set) var year:Double = 0.0
+	private (set) var day:Int
+	private (set) var month:Int
+	private (set) var year:Int
 	private (set) var cloud:Double = 0.0
-	private (set) var humidity:Double = 0.0
-	private (set) var angle:Double = 0.0
-	
-	init(Day: String, Month: String, Year: String, Cloud:String, Humidity:String)
+	init(Day: Int, Month: Int, Year: Int, Cloud:Double)
 	{
-		super.init()
-		day = Double(Day)!
-		month = Double(Month)!
-		year = Double(Year)!
-		cloud = Double(Cloud)!
-		humidity = Double(Humidity)!
-		self.sunAngle()
-	}
-	
-	func sunAngle()
-    {
-	
+		day = Day
+		month = Month
+		year = Year
+		cloud = Cloud
 	}
 }
